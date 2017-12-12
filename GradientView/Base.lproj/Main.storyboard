@@ -30,7 +30,7 @@
                                         <color key="value" red="1" green="0.019966088180000001" blue="0.098238686059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="45"/>
+                                        <real key="value" value="60"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>

@@ -11,14 +11,6 @@ import UIKit
 @IBDesignable
 class GradientView: UIView {
 
-//    enum Direction: CustomStringConvertible {
-//
-//
-//        func description() -> String {
-//
-//        }
-//    }
-
     @IBInspectable var startColor: UIColor? {
         didSet {
             updateGradient()
@@ -80,8 +72,11 @@ class GradientView: UIView {
     private func gradientPointsForAngle(_ angle: CGFloat) -> (CGPoint, CGPoint) {
         // angle is in degrees
         // create vector pointing in direction of angle
-        let p0 = pointForAngle(angle + 180)
-        let p1 = pointForAngle(angle)
+        let end = pointForAngle(angle)
+        let start = oppositePoint(end)
+        // convert to gradient space
+        let p0 = transformToGradientSpace(start)
+        let p1 = transformToGradientSpace(end)
         return (p0, p1)
     }
     
@@ -89,7 +84,7 @@ class GradientView: UIView {
         let radians = angle * .pi / 180.0
         var x = cos(radians)
         var y = sin(radians)
-        // extrapolate unit circle point to unit square
+        // extrapolate point from unit circle to unit square to get full vector length
         if (fabs(x) > fabs(y)) {
             // extrapolate x to unit length
             x = x > 0 ? 1 : -1
@@ -99,12 +94,18 @@ class GradientView: UIView {
             y = y > 0 ? 1 : -1
             x = y / tan(radians)
         }
-        let p = transformToGradientSpace(x: x, y: y)
-        return p
+        return CGPoint(x: x, y: y)
     }
     
-    private func transformToGradientSpace(x: CGFloat, y: CGFloat) -> CGPoint {
-        return CGPoint(x: (x + 1) * 0.5, y: 1.0 - (y + 1) * 0.5)
+    private func transformToGradientSpace(_ point: CGPoint) -> CGPoint {
+        // input point is in signed unit space: (-1,-1) to (1,1)
+        // convert to gradient space: (0,0) to (1,1), with flipped Y axis
+        return CGPoint(x: (point.x + 1) * 0.5, y: 1.0 - (point.y + 1) * 0.5)
+    }
+
+    private func oppositePoint(_ point: CGPoint) -> CGPoint {
+        // return the opposite point in the signed unit square
+        return CGPoint(x: -point.x, y: -point.y)
     }
     
     override func prepareForInterfaceBuilder() {
