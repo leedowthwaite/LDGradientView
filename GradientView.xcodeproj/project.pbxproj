@@ -12,7 +12,7 @@
 		9BE1F2391FDD580B006A5A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE1F2371FDD580B006A5A8F /* Main.storyboard */; };
 		9BE1F23B1FDD580B006A5A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE1F23A1FDD580B006A5A8F /* Assets.xcassets */; };
 		9BE1F23E1FDD580B006A5A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE1F23C1FDD580B006A5A8F /* LaunchScreen.storyboard */; };
-		9BE1F2461FDD584D006A5A8F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE1F2451FDD584D006A5A8F /* GradientView.swift */; };
+		9BE1F2461FDD584D006A5A8F /* LDGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE1F2451FDD584D006A5A8F /* LDGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		9BE1F23A1FDD580B006A5A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE1F23D1FDD580B006A5A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BE1F23F1FDD580B006A5A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BE1F2451FDD584D006A5A8F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		9BE1F2451FDD584D006A5A8F /* LDGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			children = (
 				9BE1F2331FDD580B006A5A8F /* AppDelegate.swift */,
 				9BE1F2351FDD580B006A5A8F /* ViewController.swift */,
-				9BE1F2451FDD584D006A5A8F /* GradientView.swift */,
+				9BE1F2451FDD584D006A5A8F /* LDGradientView.swift */,
 				9BE1F2371FDD580B006A5A8F /* Main.storyboard */,
 				9BE1F23A1FDD580B006A5A8F /* Assets.xcassets */,
 				9BE1F23C1FDD580B006A5A8F /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			files = (
 				9BE1F2361FDD580B006A5A8F /* ViewController.swift in Sources */,
 				9BE1F2341FDD580B006A5A8F /* AppDelegate.swift in Sources */,
-				9BE1F2461FDD584D006A5A8F /* GradientView.swift in Sources */,
+				9BE1F2461FDD584D006A5A8F /* LDGradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
