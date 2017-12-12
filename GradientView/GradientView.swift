@@ -11,25 +11,31 @@ import UIKit
 @IBDesignable
 class GradientView: UIView {
 
+    // the gradient start colour
     @IBInspectable var startColor: UIColor? {
         didSet {
             updateGradient()
         }
     }
+    
+    // the gradient end colour
     @IBInspectable var endColor: UIColor? {
         didSet {
             updateGradient()
         }
     }
 
+    // the gradient angle, in degrees anticlockwise from 0 (east/right)
     @IBInspectable var angle: CGFloat = 90 {
         didSet {
             updateGradient()
         }
     }
 
+    // the gradient layer
     private var gradient: CAGradientLayer?
 
+    // initializers
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         installGradient()
@@ -63,15 +69,16 @@ class GradientView: UIView {
         }
     }
 
+    // create gradient layer
     private func createGradient() -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         return gradient
     }
     
+    // create vector pointing in direction of angle
     private func gradientPointsForAngle(_ angle: CGFloat) -> (CGPoint, CGPoint) {
-        // angle is in degrees
-        // create vector pointing in direction of angle
+        // get vector start and end points
         let end = pointForAngle(angle)
         let start = oppositePoint(end)
         // convert to gradient space
@@ -80,11 +87,13 @@ class GradientView: UIView {
         return (p0, p1)
     }
     
+    // get a point corresponding to the angle
     private func pointForAngle(_ angle: CGFloat) -> CGPoint {
+        // convert degrees to radians
         let radians = angle * .pi / 180.0
         var x = cos(radians)
         var y = sin(radians)
-        // extrapolate point from unit circle to unit square to get full vector length
+        // (x,y) is in terms unit circle. Extrapolate to unit square to get full vector length
         if (fabs(x) > fabs(y)) {
             // extrapolate x to unit length
             x = x > 0 ? 1 : -1
@@ -96,21 +105,22 @@ class GradientView: UIView {
         }
         return CGPoint(x: x, y: y)
     }
-    
+
+    // transform point in unit space to gradient space
     private func transformToGradientSpace(_ point: CGPoint) -> CGPoint {
         // input point is in signed unit space: (-1,-1) to (1,1)
         // convert to gradient space: (0,0) to (1,1), with flipped Y axis
         return CGPoint(x: (point.x + 1) * 0.5, y: 1.0 - (point.y + 1) * 0.5)
     }
 
+    // return the opposite point in the signed unit square
     private func oppositePoint(_ point: CGPoint) -> CGPoint {
-        // return the opposite point in the signed unit square
         return CGPoint(x: -point.x, y: -point.y)
     }
     
+    // ensure the gradient gets initialized when the view is created in IB
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        // ensure the gradient gets initialized when the view is created in IB
         installGradient()
         updateGradient()
     }
