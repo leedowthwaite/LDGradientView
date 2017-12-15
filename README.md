@@ -1,8 +1,7 @@
 # LDGradientView
 A concise yet versatile CAGradientLayer-based view that you can configure directly within a storyboard.
 
-This project is part of my [Creating an @IBDesignable Gradient View in Swift]
-(https://appcodelabs.com/create-ibdesignable-gradient-view-swift) tutorial. 
+This project is part of my [Creating an @IBDesignable Gradient View in Swift](https://appcodelabs.com/create-ibdesignable-gradient-view-swift) tutorial. 
 Please visit the site for a complete description.
 
 ## Brief Overview
