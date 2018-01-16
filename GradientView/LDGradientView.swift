@@ -44,7 +44,7 @@ class LDGradientView: UIView {
     }
 
     // the gradient angle, in degrees anticlockwise from 0 (east/right)
-    @IBInspectable var angle: CGFloat = 90 {
+    @IBInspectable var angle: CGFloat = 270 {
         didSet {
             updateGradient()
         }
@@ -98,6 +98,7 @@ class LDGradientView: UIView {
     private func gradientPointsForAngle(_ angle: CGFloat) -> (CGPoint, CGPoint) {
         // get vector start and end points
         let end = pointForAngle(angle)
+        //let start = pointForAngle(angle+180.0)
         let start = oppositePoint(end)
         // convert to gradient space
         let p0 = transformToGradientSpace(start)
